@@ -362,6 +362,73 @@
         .high { color: #4caf50; }
         .medium { color: #ff9800; }
         .low { color: #f44336; }
+        
+        .tab-container {
+            margin-top: 20px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 20px;
+        }
+        
+        .tab-button {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #6c757d;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab-button.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .development-path {
+            margin-top: 20px;
+        }
+        
+        .path-stage {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        
+        .stage-marker {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .stage-content {
+            flex: 1;
+        }
+        
+        .stage-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -428,30 +495,38 @@
                 </div>
             </div>
             
-            <div class="detailed-analysis">
-                <div class="analysis-section">
-                    <h3 class="analysis-title">人格深度分析</h3>
-                    <p id="trait-analysis">INFJ类型的人是不知疲倦的理想主义者，他们富有想象力且意志坚定，能够将愿景变为现实。他们受到价值观的驱动，寻求生活中的意义和联系，并希望帮助他人实现潜能。INFJ对人际关系深刻而复杂，既渴望亲密又需要独处时间。</p>
-                    
-                    <div class="analysis-grid">
-                        <div class="analysis-point">
-                            <div class="point-title">核心价值观</div>
-                            <p>真诚、完整性、和谐、个人成长、为他人服务</p>
-                        </div>
-                        <div class="analysis-point">
-                            <div class="point-title">内在驱动力</div>
-                            <p>寻求意义和理解，创造积极变化，帮助他人实现潜能</p>
-                        </div>
-                        <div class="analysis-point">
-                            <div class="point-title">恐惧与不安</div>
-                            <p>被误解、失去个人价值感、无法实现理想、伤害他人</p>
-                        </div>
-                    </div>
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="overview">人格概述</button>
+                    <button class="tab-button" data-tab="cognitive">认知功能</button>
+                    <button class="tab-button" data-tab="career">职业发展</button>
+                    <button class="tab-button" data-tab="relationships">人际关系</button>
+                    <button class="tab-button" data-tab="growth">成长路径</button>
                 </div>
                 
-                <div class="analysis-section">
-                    <h3 class="analysis-title">优势与潜在盲点</h3>
-                    <div id="strengths-weaknesses">
+                <div class="tab-content active" id="overview-tab">
+                    <div class="analysis-section">
+                        <h3 class="analysis-title">人格深度分析</h3>
+                        <p id="trait-analysis">INFJ类型的人是不知疲倦的理想主义者，他们富有想象力且意志坚定，能够将愿景变为现实。他们受到价值观的驱动，寻求生活中的意义和联系，并希望帮助他人实现潜能。INFJ对人际关系深刻而复杂，既渴望亲密又需要独处时间。</p>
+                        
+                        <div class="analysis-grid">
+                            <div class="analysis-point">
+                                <div class="point-title">核心价值观</div>
+                                <p>真诚、完整性、和谐、个人成长、为他人服务</p>
+                            </div>
+                            <div class="analysis-point">
+                                <div class="point-title">内在驱动力</div>
+                                <p>寻求意义和理解，创造积极变化，帮助他人实现潜能</p>
+                            </div>
+                            <div class="analysis-point">
+                                <div class="point-title">恐惧与不安</div>
+                                <p>被误解、失去个人价值感、无法实现理想、伤害他人</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-section">
+                        <h3 class="analysis-title">优势与潜在盲点</h3>
                         <div class="analysis-grid">
                             <div class="analysis-point">
                                 <div class="point-title">核心优势</div>
@@ -469,106 +544,202 @@
                     </div>
                 </div>
                 
-                <div class="cognitive-functions">
-                    <h3 class="analysis-title">认知功能分析</h3>
-                    <div id="cognitive-functions-container">
-                        <!-- 认知功能将通过JavaScript动态生成 -->
-                    </div>
-                </div>
-                
-                <div class="analysis-section">
-                    <h3 class="analysis-title">职业发展建议</h3>
-                    <p id="career-advice">INFJ在能够表达其价值观并帮助他人的职业中最为满足。适合的职业包括心理咨询师、教师、作家、艺术家、人力资源专家、社会工作者等。他们需要工作环境能够尊重他们的洞察力和创造力，并提供一定的自主权。</p>
-                    
-                    <div class="analysis-grid">
-                        <div class="analysis-point">
-                            <div class="point-title">理想工作环境</div>
-                            <p>安静有序、重视个人价值、允许深度工作、有明确使命、支持个人成长</p>
-                        </div>
-                        <div class="analysis-point">
-                            <div class="point-title">职业发展路径</div>
-                            <p>从专业领域开始，逐步发展为导师或领导者，专注于能够产生深远影响的领域</p>
-                        </div>
-                        <div class="analysis-point">
-                            <div class="point-title">领导风格</div>
-                            <p>鼓舞人心、重视团队成员发展、关注整体愿景、促进和谐合作</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="analysis-section">
-                    <h3 class="analysis-title">亲密关系与家庭</h3>
-                    <p id="relationship-advice">INFJ在人际关系中寻求深度和意义，他们重视真诚和情感联系。他们需要学会设立界限，避免过度付出。与思考型人格相处时，INFJ需要明确表达自己的情感需求，同时也要理解对方可能更注重逻辑而非情感表达。</p>
-                    
-                    <div class="analysis-grid">
-                        <div class="analysis-point">
-                            <div class="point-title">恋爱关系特点</div>
-                            <p>忠诚、深情、寻求灵魂伴侣、重视深度连接、需要个人空间</p>
-                        </div>
-                        <div class="analysis-point">
-                            <div class="point-title">家庭角色</div>
-                            <p>情感支持者、价值观传递者、和谐维护者、深度沟通者</p>
-                        </div>
-                        <div class="analysis-point">
-                            <div class="point-title">关系挑战</div>
-                            <p>过度理想化伴侣、情感需求表达不足、冲突回避、过度牺牲自我</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="analysis-section">
-                    <h3 class="analysis-title">人际交往模式</h3>
-                    <div class="analysis-grid">
-                        <div class="analysis-point">
-                            <div class="point-title">社交偏好</div>
-                            <p>深度一对一会话、小团体交流、有意义的话题讨论、避免表面社交</p>
-                        </div>
-                        <div class="analysis-point">
-                            <div class="point-title">沟通风格</div>
-                            <p>富有同理心、隐喻式表达、关注深层含义、有时过于复杂</p>
-                        </div>
-                        <div class="analysis-point">
-                            <div class="point-title">友谊模式</div>
-                            <p>少量深度友谊、长期忠诚、共享价值观、情感支持</p>
+                <div class="tab-content" id="cognitive-tab">
+                    <div class="cognitive-functions">
+                        <h3 class="analysis-title">认知功能分析</h3>
+                        <div id="cognitive-functions-container">
+                            <!-- 认知功能将通过JavaScript动态生成 -->
                         </div>
                     </div>
                     
-                    <div class="relationship-dynamics">
-                        <div class="point-title">类型相容性分析</div>
-                        <div class="compatibility-grid">
-                            <div class="compatibility-item">
-                                <div class="compatibility-type">ENFP / ENTP</div>
-                                <div class="compatibility-level high">高度相容</div>
-                                <div class="type-stat">共享直觉功能，激发创造力</div>
+                    <div class="analysis-section">
+                        <h3 class="analysis-title">思维模式特点</h3>
+                        <div class="analysis-grid">
+                            <div class="analysis-point">
+                                <div class="point-title">决策风格</div>
+                                <p>基于价值观和长远影响做决策，重视和谐与道德一致性</p>
                             </div>
-                            <div class="compatibility-item">
-                                <div class="compatibility-type">INTJ / ENTJ</div>
-                                <div class="compatibility-level medium">中等相容</div>
-                                <div class="type-stat">互补的判断功能，需沟通差异</div>
+                            <div class="analysis-point">
+                                <div class="point-title">信息处理</div>
+                                <p>关注模式和象征意义，能够看到不同概念之间的深层联系</p>
                             </div>
-                            <div class="compatibility-item">
-                                <div class="compatibility-type">ESTJ / ISTJ</div>
-                                <div class="compatibility-level low">挑战性关系</div>
-                                <div class="type-stat">认知功能差异较大</div>
+                            <div class="analysis-point">
+                                <div class="point-title">问题解决</div>
+                                <p>创造性和整体性方法，关注解决方案的伦理和社会影响</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="dimension-explanation">
-                    <h3 class="analysis-title">MBTI维度解析</h3>
-                    <div class="dimension-title">外向(E) vs 内向(I)</div>
-                    <p>这个维度描述了个体获取能量的方式。外向型从外部世界和人际互动中获得能量，而内向型从内心世界和独处中获得能量。</p>
+                <div class="tab-content" id="career-tab">
+                    <div class="analysis-section">
+                        <h3 class="analysis-title">职业发展建议</h3>
+                        <p id="career-advice">INFJ在能够表达其价值观并帮助他人的职业中最为满足。适合的职业包括心理咨询师、教师、作家、艺术家、人力资源专家、社会工作者等。他们需要工作环境能够尊重他们的洞察力和创造力，并提供一定的自主权。</p>
+                        
+                        <div class="analysis-grid">
+                            <div class="analysis-point">
+                                <div class="point-title">理想工作环境</div>
+                                <p>安静有序、重视个人价值、允许深度工作、有明确使命、支持个人成长</p>
+                            </div>
+                            <div class="analysis-point">
+                                <div class="point-title">职业发展路径</div>
+                                <p>从专业领域开始，逐步发展为导师或领导者，专注于能够产生深远影响的领域</p>
+                            </div>
+                            <div class="analysis-point">
+                                <div class="point-title">领导风格</div>
+                                <p>鼓舞人心、重视团队成员发展、关注整体愿景、促进和谐合作</p>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <div class="dimension-title">感觉(S) vs 直觉(N)</div>
-                    <p>这个维度描述了个体收集信息的方式。感觉型关注具体事实和实际细节，而直觉型关注整体模式、可能性和未来展望。</p>
-                    
-                    <div class="dimension-title">思考(T) vs 情感(F)</div>
-                    <p>这个维度描述了个体做决策的方式。思考型基于逻辑和客观分析做决策，而情感型基于价值观和人际关系影响做决策。</p>
-                    
-                    <div class="dimension-title">判断(J) vs 感知(P)</div>
-                    <p>这个维度描述了个体对待生活的方式。判断型偏好有计划、有组织的生活方式，而感知型偏好灵活、自发的生活方式。</p>
+                    <div class="analysis-section">
+                        <h3 class="analysis-title">推荐职业领域</h3>
+                        <div class="analysis-grid">
+                            <div class="analysis-point">
+                                <div class="point-title">教育与咨询</div>
+                                <p>心理咨询师、学校顾问、职业规划师、特殊教育教师</p>
+                            </div>
+                            <div class="analysis-point">
+                                <div class="point-title">创意与艺术</div>
+                                <p>作家、艺术家、音乐家、设计师、摄影师</p>
+                            </div>
+                            <div class="analysis-point">
+                                <div class="point-title">社会服务</div>
+                                <p>社会工作者、非营利组织管理者、社区发展专员</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
+                <div class="tab-content" id="relationships-tab">
+                    <div class="analysis-section">
+                        <h3 class="analysis-title">亲密关系与家庭</h3>
+                        <p id="relationship-advice">INFJ在人际关系中寻求深度和意义，他们重视真诚和情感联系。他们需要学会设立界限，避免过度付出。与思考型人格相处时，INFJ需要明确表达自己的情感需求，同时也要理解对方可能更注重逻辑而非情感表达。</p>
+                        
+                        <div class="analysis-grid">
+                            <div class="analysis-point">
+                                <div class="point-title">恋爱关系特点</div>
+                                <p>忠诚、深情、寻求灵魂伴侣、重视深度连接、需要个人空间</p>
+                            </div>
+                            <div class="analysis-point">
+                                <div class="point-title">家庭角色</div>
+                                <p>情感支持者、价值观传递者、和谐维护者、深度沟通者</p>
+                            </div>
+                            <div class="analysis-point">
+                                <div class="point-title">关系挑战</div>
+                                <p>过度理想化伴侣、情感需求表达不足、冲突回避、过度牺牲自我</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-section">
+                        <h3 class="analysis-title">人际交往模式</h3>
+                        <div class="analysis-grid">
+                            <div class="analysis-point">
+                                <div class="point-title">社交偏好</div>
+                                <p>深度一对一会话、小团体交流、有意义的话题讨论、避免表面社交</p>
+                            </div>
+                            <div class="analysis-point">
+                                <div class="point-title">沟通风格</div>
+                                <p>富有同理心、隐喻式表达、关注深层含义、有时过于复杂</p>
+                            </div>
+                            <div class="analysis-point">
+                                <div class="point-title">友谊模式</div>
+                                <p>少量深度友谊、长期忠诚、共享价值观、情感支持</p>
+                            </div>
+                        </div>
+                        
+                        <div class="relationship-dynamics">
+                            <div class="point-title">类型相容性分析</div>
+                            <div class="compatibility-grid">
+                                <div class="compatibility-item">
+                                    <div class="compatibility-type">ENFP / ENTP</div>
+                                    <div class="compatibility-level high">高度相容</div>
+                                    <div class="type-stat">共享直觉功能，激发创造力</div>
+                                </div>
+                                <div class="compatibility-item">
+                                    <div class="compatibility-type">INTJ / ENTJ</div>
+                                    <div class="compatibility-level medium">中等相容</div>
+                                    <div class="type-stat">互补的判断功能，需沟通差异</div>
+                                </div>
+                                <div class="compatibility-item">
+                                    <div class="compatibility-type">ESTJ / ISTJ</div>
+                                    <div class="compatibility-level low">挑战性关系</div>
+                                    <div class="type-stat">认知功能差异较大</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="growth-tab">
+                    <div class="analysis-section">
+                        <h3 class="analysis-title">个人发展路径</h3>
+                        <div class="development-path">
+                            <div class="path-stage">
+                                <div class="stage-marker">1</div>
+                                <div class="stage-content">
+                                    <div class="stage-title">自我认知阶段（青少年-20多岁）</div>
+                                    <p>探索个人价值观和身份认同，发展主导功能内向直觉(Ni)，开始形成人生愿景和目标</p>
+                                </div>
+                            </div>
+                            <div class="path-stage">
+                                <div class="stage-marker">2</div>
+                                <div class="stage-content">
+                                    <div class="stage-title">能力建设阶段（20-30多岁）</div>
+                                    <p>发展辅助功能外向情感(Fe)，学习平衡理想与现实，建立有意义的人际关系</p>
+                                </div>
+                            </div>
+                            <div class="path-stage">
+                                <div class="stage-marker">3</div>
+                                <div class="stage-content">
+                                    <div class="stage-title">整合阶段（30-50多岁）</div>
+                                    <p>发展第三功能内向思考(Ti)，学会更客观地分析问题，平衡情感与逻辑</p>
+                                </div>
+                            </div>
+                            <div class="path-stage">
+                                <div class="stage-marker">4</div>
+                                <div class="stage-content">
+                                    <div class="stage-title">成熟阶段（50岁以后）</div>
+                                    <p>整合劣势功能外向感觉(Se)，更好地活在当下，平衡未来愿景与现实行动</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-section">
+                        <h3 class="analysis-title">压力管理与自我关怀</h3>
+                        <div class="analysis-grid">
+                            <div class="analysis-point">
+                                <div class="point-title">压力表现</div>
+                                <p>过度思考、情感敏感、身体紧张、回避社交、完美主义加剧</p>
+                            </div>
+                            <div class="analysis-point">
+                                <div class="point-title">恢复策略</div>
+                                <p>独处时间、创造性表达、与信任的人深度交流、冥想与正念练习</p>
+                            </div>
+                            <div class="analysis-point">
+                                <div class="point-title">健康习惯</div>
+                                <p>定期自我反思、设立健康界限、平衡工作与休息、发展务实技能</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dimension-explanation">
+                <h3 class="analysis-title">MBTI维度解析</h3>
+                <div class="dimension-title">外向(E) vs 内向(I)</div>
+                <p>这个维度描述了个体获取能量的方式。外向型从外部世界和人际互动中获得能量，而内向型从内心世界和独处中获得能量。</p>
+                
+                <div class="dimension-title">感觉(S) vs 直觉(N)</div>
+                <p>这个维度描述了个体收集信息的方式。感觉型关注具体事实和实际细节，而直觉型关注整体模式、可能性和未来展望。</p>
+                
+                <div class="dimension-title">思考(T) vs 情感(F)</div>
+                <p>这个维度描述了个体做决策的方式。思考型基于逻辑和客观分析做决策，而情感型基于价值观和人际关系影响做决策。</p>
+                
+                <div class="dimension-title">判断(J) vs 感知(P)</div>
+                <p>这个维度描述了个体对待生活的方式。判断型偏好有计划、有组织的生活方式，而感知型偏好灵活、自发的生活方式。</p>
             </div>
             
             <button class="btn" id="restart-btn">重新测试</button>
@@ -601,8 +772,476 @@
                     { text: "先倾听和思考，再选择性发言", score: "I" }
                 ]
             },
-            // 为简化示例，这里只展示部分题目
-            // 实际应有60道题目
+            {
+                text: "在社交场合中，您通常：",
+                dimension: "EI",
+                options: [
+                    { text: "认识很多人，广泛交流", score: "E" },
+                    { text: "与少数人进行深入交谈", score: "I" }
+                ]
+            },
+            {
+                text: "您更倾向于通过什么方式思考问题？",
+                dimension: "EI",
+                options: [
+                    { text: "通过与他人讨论来理清思路", score: "E" },
+                    { text: "通过独自思考来理清思路", score: "I" }
+                ]
+            },
+            {
+                text: "当遇到新环境时，您通常：",
+                dimension: "EI",
+                options: [
+                    { text: "主动探索，迅速适应", score: "E" },
+                    { text: "先观察，慢慢适应", score: "I" }
+                ]
+            },
+            {
+                text: "您的朋友圈通常是：",
+                dimension: "EI",
+                options: [
+                    { text: "广泛而多样", score: "E" },
+                    { text: "小而深入", score: "I" }
+                ]
+            },
+            {
+                text: "在表达想法时，您倾向于：",
+                dimension: "EI",
+                options: [
+                    { text: "边说边想，通过表达来完善想法", score: "E" },
+                    { text: "先想清楚再表达", score: "I" }
+                ]
+            },
+            {
+                text: "空闲时间您更喜欢：",
+                dimension: "EI",
+                options: [
+                    { text: "与朋友一起度过", score: "E" },
+                    { text: "独自或与一两个亲密朋友度过", score: "I" }
+                ]
+            },
+            {
+                text: "当面对压力时，您更可能：",
+                dimension: "EI",
+                options: [
+                    { text: "寻求他人的支持和陪伴", score: "E" },
+                    { text: "独自处理，需要空间思考", score: "I" }
+                ]
+            },
+            {
+                text: "您认为自己的能量主要来自：",
+                dimension: "EI",
+                options: [
+                    { text: "外部世界的人和活动", score: "E" },
+                    { text: "内心的想法和反思", score: "I" }
+                ]
+            },
+            {
+                text: "在会议上，您通常：",
+                dimension: "EI",
+                options: [
+                    { text: "积极参与，经常发言", score: "E" },
+                    { text: "更多倾听，偶尔发言", score: "I" }
+                ]
+            },
+            {
+                text: "当学习新知识时，您倾向于：",
+                dimension: "EI",
+                options: [
+                    { text: "通过实践和讨论学习", score: "E" },
+                    { text: "通过阅读和思考学习", score: "I" }
+                ]
+            },
+            {
+                text: "您如何看待独处时间？",
+                dimension: "EI",
+                options: [
+                    { text: "有时会感到无聊或孤独", score: "E" },
+                    { text: "通常是必需和享受的", score: "I" }
+                ]
+            },
+            {
+                text: "在解决问题时，您更可能：",
+                dimension: "EI",
+                options: [
+                    { text: "寻求多种外部意见", score: "E" },
+                    { text: "依靠自己的分析和判断", score: "I" }
+                ]
+            },
+            {
+                text: "您认为自己是：",
+                dimension: "EI",
+                options: [
+                    { text: "先行动后思考", score: "E" },
+                    { text: "先思考后行动", score: "I" }
+                ]
+            },
+            
+            // 感觉(S) vs 直觉(N) 维度 - 15题
+            {
+                text: "您更倾向于相信什么？",
+                dimension: "SN",
+                options: [
+                    { text: "具体的事实和实际经验", score: "S" },
+                    { text: "灵感和未来的可能性", score: "N" }
+                ]
+            },
+            {
+                text: "学习新知识时，您倾向于：",
+                dimension: "SN",
+                options: [
+                    { text: "关注具体细节和实际应用", score: "S" },
+                    { text: "关注整体概念和潜在意义", score: "N" }
+                ]
+            },
+            {
+                text: "您更容易注意到：",
+                dimension: "SN",
+                options: [
+                    { text: "环境中具体的细节和变化", score: "S" },
+                    { text: "事物之间的模式和联系", score: "N" }
+                ]
+            },
+            {
+                text: "当描述事物时，您倾向于：",
+                dimension: "SN",
+                options: [
+                    { text: "使用具体、实际的描述", score: "S" },
+                    { text: "使用隐喻和象征性语言", score: "N" }
+                ]
+            },
+            {
+                text: "您更感兴趣于：",
+                dimension: "SN",
+                options: [
+                    { text: "当前的实际问题", score: "S" },
+                    { text: "未来的可能性", score: "N" }
+                ]
+            },
+            {
+                text: "在阅读时，您更关注：",
+                dimension: "SN",
+                options: [
+                    { text: "文字本身的确切含义", score: "S" },
+                    { text: "文字背后的深层含义", score: "N" }
+                ]
+            },
+            {
+                text: "当解决问题时，您倾向于：",
+                dimension: "SN",
+                options: [
+                    { text: "使用已知的、可靠的方法", score: "S" },
+                    { text: "尝试新的、创新的方法", score: "N" }
+                ]
+            },
+            {
+                text: "您更擅长：",
+                dimension: "SN",
+                options: [
+                    { text: "处理具体、实际的任务", score: "S" },
+                    { text: "构想新的想法和可能性", score: "N" }
+                ]
+            },
+            {
+                text: "您认为事实是：",
+                dimension: "SN",
+                options: [
+                    { text: "就是它们本来的样子", score: "S" },
+                    { text: "可以有多重解释", score: "N" }
+                ]
+            },
+            {
+                text: "当规划未来时，您更关注：",
+                dimension: "SN",
+                options: [
+                    { text: "具体的步骤和细节", score: "S" },
+                    { text: "整体的愿景和目标", score: "N" }
+                ]
+            },
+            {
+                text: "您更喜欢什么样的工作？",
+                dimension: "SN",
+                options: [
+                    { text: "有明确指示和具体目标的工作", score: "S" },
+                    { text: "允许创新和自主决策的工作", score: "N" }
+                ]
+            },
+            {
+                text: "当学习新技能时，您倾向于：",
+                dimension: "SN",
+                options: [
+                    { text: "按部就班，掌握每一步", score: "S" },
+                    { text: "先理解整体概念，再填充细节", score: "N" }
+                ]
+            },
+            {
+                text: "您更信任：",
+                dimension: "SN",
+                options: [
+                    { text: "经验和实践", score: "S" },
+                    { text: "直觉和灵感", score: "N" }
+                ]
+            },
+            {
+                text: "在交谈中，您更可能：",
+                dimension: "SN",
+                options: [
+                    { text: "谈论具体的事件和事实", score: "S" },
+                    { text: "谈论抽象的概念和理论", score: "N" }
+                ]
+            },
+            {
+                text: "您如何看待传统？",
+                dimension: "SN",
+                options: [
+                    { text: "重视并遵循经过验证的方法", score: "S" },
+                    { text: "愿意挑战和改变传统", score: "N" }
+                ]
+            },
+            
+            // 思考(T) vs 情感(F) 维度 - 15题
+            {
+                text: "做决定时，您更注重什么？",
+                dimension: "TF",
+                options: [
+                    { text: "逻辑、客观分析和一致性", score: "T" },
+                    { text: "价值观和对他人的影响", score: "F" }
+                ]
+            },
+            {
+                text: "当朋友遇到困难时，您更可能：",
+                dimension: "TF",
+                options: [
+                    { text: "分析问题并提供解决方案", score: "T" },
+                    { text: "提供情感支持和理解", score: "F" }
+                ]
+            },
+            {
+                text: "在评价他人时，您更注重：",
+                dimension: "TF",
+                options: [
+                    { text: "他们的能力和成就", score: "T" },
+                    { text: "他们的品格和动机", score: "F" }
+                ]
+            },
+            {
+                text: "当发生冲突时，您倾向于：",
+                dimension: "TF",
+                options: [
+                    { text: "直接面对问题，追求公正", score: "T" },
+                    { text: "寻求和谐，维护关系", score: "F" }
+                ]
+            },
+            {
+                text: "您认为真理应该：",
+                dimension: "TF",
+                options: [
+                    { text: "无论后果如何，都要说出来", score: "T" },
+                    { text: "考虑对他人的影响后适当表达", score: "F" }
+                ]
+            },
+            {
+                text: "在做决定时，您更可能：",
+                dimension: "TF",
+                options: [
+                    { text: "基于客观标准", score: "T" },
+                    { text: "基于个人价值观", score: "F" }
+                ]
+            },
+            {
+                text: "您更欣赏什么样的反馈？",
+                dimension: "TF",
+                options: [
+                    { text: "直接、诚实的批评", score: "T" },
+                    { text: "温和、建设性的建议", score: "F" }
+                ]
+            },
+            {
+                text: "在团队中，您更重视：",
+                dimension: "TF",
+                options: [
+                    { text: "效率和效果", score: "T" },
+                    { text: "和谐与合作", score: "F" }
+                ]
+            },
+            {
+                text: "您认为同情心：",
+                dimension: "TF",
+                options: [
+                    { text: "有时会影响客观判断", score: "T" },
+                    { text: "是理解他人的重要方式", score: "F" }
+                ]
+            },
+            {
+                text: "当给予建议时，您倾向于：",
+                dimension: "TF",
+                options: [
+                    { text: "提供逻辑分析和解决方案", score: "T" },
+                    { text: "考虑对方的感受和需求", score: "F" }
+                ]
+            },
+            {
+                text: "您更可能因为什么批评他人？",
+                dimension: "TF",
+                options: [
+                    { text: "他们的错误或低效", score: "T" },
+                    { text: "他们对他人不体贴", score: "F" }
+                ]
+            },
+            {
+                text: "在处理问题时，您更关注：",
+                dimension: "TF",
+                options: [
+                    { text: "问题本身和解决方案", score: "T" },
+                    { text: "问题对相关人员的影响", score: "F" }
+                ]
+            },
+            {
+                text: "您认为公平意味着：",
+                dimension: "TF",
+                options: [
+                    { text: "每个人按照规则得到应得的", score: "T" },
+                    { text: "考虑每个人的特殊情况", score: "F" }
+                ]
+            },
+            {
+                text: "在表达不同意见时，您倾向于：",
+                dimension: "TF",
+                options: [
+                    { text: "直接表达，不绕弯子", score: "T" },
+                    { text: "委婉表达，考虑对方感受", score: "F" }
+                ]
+            },
+            {
+                text: "您认为决策应该基于：",
+                dimension: "TF",
+                options: [
+                    { text: "逻辑和事实", score: "T" },
+                    { text: "价值观和人际关系", score: "F" }
+                ]
+            },
+            
+            // 判断(J) vs 感知(P) 维度 - 15题
+            {
+                text: "您更喜欢什么样的生活方式？",
+                dimension: "JP",
+                options: [
+                    { text: "有计划、有组织、决定性的", score: "J" },
+                    { text: "灵活、自发、适应性的", score: "P" }
+                ]
+            },
+            {
+                text: "对于周末计划，您倾向于：",
+                dimension: "JP",
+                options: [
+                    { text: "提前安排好活动细节", score: "J" },
+                    { text: "保持开放，看心情决定", score: "P" }
+                ]
+            },
+            {
+                text: "当面对任务时，您倾向于：",
+                dimension: "JP",
+                options: [
+                    { text: "立即开始，尽早完成", score: "J" },
+                    { text: "在截止日期前完成", score: "P" }
+                ]
+            },
+            {
+                text: "您更喜欢：",
+                dimension: "JP",
+                options: [
+                    { text: "做出决定并坚持下去", score: "J" },
+                    { text: "保持选择的开放性", score: "P" }
+                ]
+            },
+            {
+                text: "在工作环境中，您更喜欢：",
+                dimension: "JP",
+                options: [
+                    { text: "结构化和可预测性", score: "J" },
+                    { text: "灵活性和自主性", score: "P" }
+                ]
+            },
+            {
+                text: "当旅行时，您倾向于：",
+                dimension: "JP",
+                options: [
+                    { text: "提前做好详细计划", score: "J" },
+                    { text: "随性而行，灵活调整", score: "P" }
+                ]
+            },
+            {
+                text: "您如何看待截止日期？",
+                dimension: "JP",
+                options: [
+                    { text: "严格遵守，提前完成", score: "J" },
+                    { text: "作为参考，灵活处理", score: "P" }
+                ]
+            },
+            {
+                text: "在购物时，您倾向于：",
+                dimension: "JP",
+                options: [
+                    { text: "有明确目标，快速决定", score: "J" },
+                    { text: "浏览多种选项，慢慢决定", score: "P" }
+                ]
+            },
+            {
+                text: "您认为自己的生活风格是：",
+                dimension: "JP",
+                options: [
+                    { text: "有组织和条理的", score: "J" },
+                    { text: "随性和适应的", score: "P" }
+                ]
+            },
+            {
+                text: "当开始新项目时，您倾向于：",
+                dimension: "JP",
+                options: [
+                    { text: "先做好详细计划", score: "J" },
+                    { text: "直接开始，边做边调整", score: "P" }
+                ]
+            },
+            {
+                text: "您更喜欢什么样的工作流程？",
+                dimension: "JP",
+                options: [
+                    { text: "按部就班，完成一项再开始下一项", score: "J" },
+                    { text: "多任务处理，灵活切换", score: "P" }
+                ]
+            },
+            {
+                text: "当有多个选择时，您倾向于：",
+                dimension: "JP",
+                options: [
+                    { text: "尽快做出决定", score: "J" },
+                    { text: "保持开放，收集更多信息", score: "P" }
+                ]
+            },
+            {
+                text: "您如何看待规则和程序？",
+                dimension: "JP",
+                options: [
+                    { text: "通常是有用和必要的", score: "J" },
+                    { text: "有时是限制性的", score: "P" }
+                ]
+            },
+            {
+                text: "在时间管理方面，您倾向于：",
+                dimension: "JP",
+                options: [
+                    { text: "提前规划，按计划行事", score: "J" },
+                    { text: "灵活应对，根据情况调整", score: "P" }
+                ]
+            },
+            {
+                text: "您认为自己是：",
+                dimension: "JP",
+                options: [
+                    { text: "决断和确定的", score: "J" },
+                    { text: "好奇和探索的", score: "P" }
+                ]
+            }
         ];
 
         // 人格类型描述数据
@@ -638,27 +1277,10 @@
                 socialPreferences: "深度一对一会话、小团体交流、有意义的话题讨论、避免表面社交",
                 communicationStyle: "富有同理心、隐喻式表达、关注深层含义、有时过于复杂",
                 friendshipPattern: "少量深度友谊、长期忠诚、共享价值观、情感支持",
-                growthAdvice: "学会设立界限、接受不完美、平衡理想与现实、发展务实技能、练习自我关怀"
-            },
-            "ENFP": {
-                name: "活动家",
-                description: "热情、有创造力、社交能力强，总能找到理由微笑",
-                energy: "外向 (E)",
-                cognitive: "直觉 (N)",
-                judgment: "情感 (F)",
-                attitude: "感知 (P)",
-                population: "约占人口的7-8%",
-                analysis: "ENFP类型的人是真正富有自由精神的人。他们常常是聚会上的焦点，但与其说他们是社交达人，不如说他们是敏锐、热情的人际关系观察者，他们与人群建立深刻的情感联系。",
-                strengths: "热情、富有想象力、洞察人际关系、沟通能力强、适应性强",
-                weaknesses: "不切实际、容易分心、过度理想化、拖延倾向",
-                career: "ENFP在能够发挥创造力和人际交往能力的职业中表现最佳。适合的职业包括咨询师、心理学家、记者、演员、教师、人力资源专家等。",
-                relationships: "ENFP在人际关系中充满热情和活力，他们重视真诚和深度的联系。他们需要学会专注和完成项目，同时也要注意不要过度承诺。",
-                cognitiveFunctions: [
-                    { name: "主导功能：外向直觉(Ne)", description: "能够看到多种可能性和联系，善于产生新想法" },
-                    { name: "辅助功能：内向情感(Fi)", description: "拥有深刻的个人价值观和道德准则" },
-                    { name: "第三功能：外向思考(Te)", description: "能够组织外部世界，有效实施计划" },
-                    { name: "劣势功能：内向感觉(Si)", description: "关注过去经验和具体细节，可能忽视传统和常规" }
-                ]
+                growthAdvice: "学会设立界限、接受不完美、平衡理想与现实、发展务实技能、练习自我关怀",
+                decisionStyle: "基于价值观和长远影响做决策，重视和谐与道德一致性",
+                infoProcessing: "关注模式和象征意义，能够看到不同概念之间的深层联系",
+                problemSolving: "创造性和整体性方法，关注解决方案的伦理和社会影响"
             }
             // 实际应用中应包含所有16种类型
         };
@@ -809,29 +1431,34 @@
             traitAnalysis.textContent = data.analysis;
             
             // 更新优势和弱点部分
-            document.querySelector('.analysis-point:nth-child(1) p').textContent = data.coreValues || data.strengths;
-            document.querySelector('.analysis-point:nth-child(2) p').textContent = data.innerDrive || "";
-            document.querySelector('.analysis-point:nth-child(3) p').textContent = data.fears || "";
+            document.querySelector('#overview-tab .analysis-point:nth-child(1) p').textContent = data.coreValues || data.strengths;
+            document.querySelector('#overview-tab .analysis-point:nth-child(2) p').textContent = data.innerDrive || "";
+            document.querySelector('#overview-tab .analysis-point:nth-child(3) p').textContent = data.fears || "";
             
             // 更新职业建议部分
             careerAdvice.textContent = data.career;
-            document.querySelectorAll('.analysis-grid')[2].children[0].querySelector('p').textContent = data.idealEnvironment || "";
-            document.querySelectorAll('.analysis-grid')[2].children[1].querySelector('p').textContent = data.careerPath || "";
-            document.querySelectorAll('.analysis-grid')[2].children[2].querySelector('p').textContent = data.leadershipStyle || "";
+            document.querySelector('#career-tab .analysis-grid:nth-child(2) .analysis-point:nth-child(1) p').textContent = data.idealEnvironment || "";
+            document.querySelector('#career-tab .analysis-grid:nth-child(2) .analysis-point:nth-child(2) p').textContent = data.careerPath || "";
+            document.querySelector('#career-tab .analysis-grid:nth-child(2) .analysis-point:nth-child(3) p').textContent = data.leadershipStyle || "";
             
             // 更新关系建议部分
             relationshipAdvice.textContent = data.relationships;
-            document.querySelectorAll('.analysis-grid')[3].children[0].querySelector('p').textContent = data.relationshipTraits || "";
-            document.querySelectorAll('.analysis-grid')[3].children[1].querySelector('p').textContent = data.familyRole || "";
-            document.querySelectorAll('.analysis-grid')[3].children[2].querySelector('p').textContent = data.relationshipChallenges || "";
+            document.querySelector('#relationships-tab .analysis-grid:nth-child(2) .analysis-point:nth-child(1) p').textContent = data.relationshipTraits || "";
+            document.querySelector('#relationships-tab .analysis-grid:nth-child(2) .analysis-point:nth-child(2) p').textContent = data.familyRole || "";
+            document.querySelector('#relationships-tab .analysis-grid:nth-child(2) .analysis-point:nth-child(3) p').textContent = data.relationshipChallenges || "";
             
             // 更新人际交往部分
-            document.querySelectorAll('.analysis-grid')[4].children[0].querySelector('p').textContent = data.socialPreferences || "";
-            document.querySelectorAll('.analysis-grid')[4].children[1].querySelector('p').textContent = data.communicationStyle || "";
-            document.querySelectorAll('.analysis-grid')[4].children[2].querySelector('p').textContent = data.friendshipPattern || "";
+            document.querySelector('#relationships-tab .analysis-grid:nth-child(3) .analysis-point:nth-child(1) p').textContent = data.socialPreferences || "";
+            document.querySelector('#relationships-tab .analysis-grid:nth-child(3) .analysis-point:nth-child(2) p').textContent = data.communicationStyle || "";
+            document.querySelector('#relationships-tab .analysis-grid:nth-child(3) .analysis-point:nth-child(3) p').textContent = data.friendshipPattern || "";
             
             // 更新成长建议
-            document.querySelectorAll('.analysis-grid')[1].children[2].querySelector('p').textContent = data.growthAdvice || "";
+            document.querySelector('#overview-tab .analysis-grid:nth-child(2) .analysis-point:nth-child(3) p').textContent = data.growthAdvice || "";
+            
+            // 更新认知功能部分
+            document.querySelector('#cognitive-tab .analysis-grid .analysis-point:nth-child(1) p').textContent = data.decisionStyle || "";
+            document.querySelector('#cognitive-tab .analysis-grid .analysis-point:nth-child(2) p').textContent = data.infoProcessing || "";
+            document.querySelector('#cognitive-tab .analysis-grid .analysis-point:nth-child(3) p').textContent = data.problemSolving || "";
             
             if (data.cognitiveFunctions) {
                 displayCognitiveFunctions(data.cognitiveFunctions);
@@ -840,6 +1467,24 @@
             testSection.style.display = 'none';
             resultSection.style.display = 'block';
         }
+
+        // 标签页切换
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // 移除所有active类
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // 添加active类到当前按钮和内容
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab') + '-tab';
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
 
         // 事件监听
         startTestBtn.addEventListener('click', () => {
